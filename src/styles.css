@@ -1,0 +1,722 @@
+@import "tailwindcss";
+
+/* ヘッダー */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.providerBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text);
+  padding: 4px 10px;
+  background: var(--color-bg-secondary);
+  border-radius: 12px;
+}
+
+.providerBadgeInactive {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  padding: 4px 10px;
+  background: var(--color-bg-secondary);
+  border-radius: 12px;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.settingsButton {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.settingsButton:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+}
+
+/* 設定パネル */
+.settingsPanel {
+  background: var(--color-bg-secondary);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.select {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 12px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M3 4.5L6 7.5L9 4.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--color-border-brand);
+}
+
+.label {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.hint {
+  font-size: 10px;
+  color: var(--color-text-tertiary);
+  margin-top: 4px;
+}
+
+.hint a {
+  color: var(--color-text-brand);
+  text-decoration: none;
+}
+
+.hint a:hover {
+  text-decoration: underline;
+}
+
+/* ステップインジケーター */
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+
+.stepActive {
+  opacity: 1;
+}
+
+.stepDone .stepNumber {
+  background: #10b981;
+  border-color: #10b981;
+}
+
+.stepNumber {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.stepLabel {
+  font-size: 10px;
+  color: var(--color-text-secondary);
+}
+
+.stepLine {
+  width: 40px;
+  height: 2px;
+  background: var(--color-border);
+  margin: 0 8px;
+  margin-bottom: 18px;
+}
+
+/* カード */
+.card {
+  background: var(--color-bg-secondary);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.cardIcon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.cardDesc {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+}
+
+.cardHint {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  margin-top: 8px;
+}
+
+/* ローダー */
+.loader {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-text-brand);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 12px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* スキャン結果 */
+.scanResults {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px 0;
+}
+
+.scanStat {
+  text-align: center;
+}
+
+.scanStatValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.scanStatLabel {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+.scanStatDivider {
+  width: 1px;
+  background: var(--color-border);
+}
+
+/* 警告ボックス */
+.warningBox {
+  font-size: 12px;
+  padding: 10px 12px;
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+  text-align: left;
+}
+
+/* パッチリスト */
+.patchHeader {
+  font-size: 13px;
+  color: var(--color-text);
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.patchCount {
+  font-weight: 600;
+  color: var(--color-text-brand);
+}
+
+.patches {
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 11px;
+  text-align: left;
+}
+
+.patch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.patch:last-child {
+  border-bottom: none;
+}
+
+.patchAction {
+  font-size: 10px;
+  padding: 2px 6px;
+  background: var(--color-bg-tertiary);
+  border-radius: 4px;
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+.patchReason {
+  color: var(--color-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 完了 */
+.doneStats {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 8px 0;
+}
+
+.doneSuccess {
+  font-size: 12px;
+  color: #10b981;
+  font-weight: 500;
+}
+
+.doneFailed {
+  font-size: 12px;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+/* エラー */
+.errorBox {
+  font-size: 12px;
+  padding: 10px 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.errors {
+  max-height: 80px;
+  overflow-y: auto;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 6px;
+  font-size: 11px;
+  color: #ef4444;
+  text-align: left;
+}
+
+/* 旧スタイル（互換性のため残す） */
+.container {
+  overflow: auto;
+  height: 164px;
+}
+
+.editor {
+  min-height: 100%;
+  font-family: var(--font-family-code);
+  font-size: var(--font-size-12);
+}
+
+.settingsContent {
+  padding: 0 4px;
+}
+
+.statusBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  padding: 6px 10px;
+  background: var(--color-bg-secondary);
+  border-radius: 4px;
+}
+
+.resultBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  padding: 8px 12px;
+  background: var(--color-bg-secondary);
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+}
+
+.resultBoxSuccess {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  padding: 8px 12px;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+}
+
+.resultBoxWarning {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  padding: 8px 12px;
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+}
+
+.resultIcon {
+  color: #10b981;
+  font-weight: bold;
+}
+
+/* モードトグル */
+.modeToggle {
+  display: flex;
+  gap: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  margin-bottom: 4px;
+}
+
+.modeButton {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.modeButton:first-child {
+  border-right: 1px solid var(--color-border);
+}
+
+.modeButton:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.modeButtonActive {
+  background: var(--color-bg-brand);
+  color: var(--color-text-onbrand);
+}
+
+.modeButtonActive:hover {
+  background: var(--color-bg-brand);
+}
+
+.modeInfo {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  text-align: center;
+  padding: 6px 0;
+}
+
+/* 色プレビュー */
+.colorPreview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.colorSwatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.colorMore {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--color-bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--color-text-secondary);
+}
+
+/* トークンリスト */
+.tokenList {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.tokenItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.tokenItem:last-child {
+  border-bottom: none;
+}
+
+.tokenSwatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tokenInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.tokenName {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tokenHex {
+  font-size: 10px;
+  color: var(--color-text-tertiary);
+  font-family: var(--font-family-code);
+}
+
+/* ラジオグループ */
+.radioGroup {
+  display: flex;
+  gap: 16px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.radioLabel input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+/* テキストエリア */
+.textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 12px;
+  font-family: var(--font-family-code);
+  resize: vertical;
+  min-height: 60px;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-border-brand);
+}
+
+.textarea::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+/* トークン編集 */
+.tokenItemEditing {
+  background: var(--color-bg-tertiary);
+}
+
+.tokenNameEditable {
+  cursor: pointer;
+  padding: 2px 4px;
+  margin: -2px -4px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.tokenNameEditable:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.tokenNameInput {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-brand);
+  border-radius: 4px;
+  padding: 2px 6px;
+  width: 100%;
+  outline: none;
+}
+
+.tokenActions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.tokenActionBtn {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: none;
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: all 0.15s;
+}
+
+.tokenActionBtn:hover {
+  background: var(--color-bg-brand);
+  color: var(--color-text-onbrand);
+}
+
+.tokenActionBtnActive {
+  background: var(--color-bg-brand);
+  color: var(--color-text-onbrand);
+}
+
+/* チャット機能 */
+.chatSection {
+  margin-top: 12px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 12px;
+}
+
+.chatHeader {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chatInputWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.chatInput {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 12px;
+  resize: none;
+}
+
+.chatInput:focus {
+  outline: none;
+  border-color: var(--color-border-brand);
+}
+
+.chatInput::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.chatSendBtn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: var(--color-bg-brand);
+  color: var(--color-text-onbrand);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+.chatSendBtn:hover {
+  opacity: 0.9;
+}
+
+.chatSendBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.selectedTokenInfo {
+  font-size: 11px;
+  color: var(--color-text-brand);
+  background: rgba(59, 130, 246, 0.1);
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selectedTokenClear {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 4px;
+}
+
+.selectedTokenClear:hover {
+  color: var(--color-text);
+}
