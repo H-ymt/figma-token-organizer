@@ -80,9 +80,16 @@ export default function () {
           throw new Error(`Unknown provider: ${provider}`);
       }
 
+      // コンテキスト情報を含めてAIに渡す（トークン名精度向上のため）
       const colors = lastScanResult.colors.map((c) => ({
         hex: c.hex,
         count: c.count,
+        contexts: c.contexts.map((ctx) => ({
+          nodeName: ctx.nodeName,
+          nodeType: ctx.nodeType,
+          parentPath: ctx.parentPath,
+          usageType: ctx.usageType,
+        })),
       }));
 
       console.log("[main] Calling AI with", colors.length, "colors, style:", promptConfig.namingStyle);
