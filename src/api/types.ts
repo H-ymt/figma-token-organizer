@@ -13,10 +13,19 @@ export interface PromptConfig {
   existingTokens?: string;
 }
 
-// 抽出された色（使用回数付き）
+// 色の使用コンテキスト
+export interface ColorContext {
+  nodeName: string;
+  nodeType: string;
+  parentPath: string;
+  usageType: "fill" | "stroke";
+}
+
+// 抽出された色（使用回数とコンテキスト付き）
 export interface ColorInput {
   hex: string;
   count: number;
+  contexts: ColorContext[]; // 使用されている場所の情報
 }
 
 // AIが生成するトークン

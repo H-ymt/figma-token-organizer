@@ -44,11 +44,91 @@ Figmaデスクトップアプリで:
 
 | プロバイダー   | 特徴                   | API Key取得                                         |
 | -------------- | ---------------------- | --------------------------------------------------- |
-| **Groq**       | 高速・無料枠あり       | [Groq Console](https://console.groq.com/keys)       |
+| **Groq**       | 高速・無料枠あり（推奨）| [Groq Console](https://console.groq.com/keys)       |
 | **Claude**     | 高精度                 | [Anthropic Console](https://console.anthropic.com/) |
 | **Z.AI**       | GLMベース              | [Z.AI](https://z.ai/model-api)                      |
-| **Ollama**     | ローカル実行           | 不要（`OLLAMA_ORIGINS="*" ollama serve`で起動）     |
+| **Ollama**     | ローカル実行・無料     | 不要（[セットアップ手順](#ollamaのセットアップ)を参照）|
 | **OpenAI互換** | カスタムエンドポイント | プロバイダーによる                                  |
+
+#### Ollamaのセットアップ
+
+Ollamaを使用すると、AIをローカルで実行できるため、API料金がかからず、データがインターネットに送信されません。
+
+##### 1. Ollamaのインストール
+
+[Ollama公式サイト](https://ollama.com/)からダウンロードしてインストールしてください。
+
+##### 2. モデルのダウンロード
+
+ターミナル（Windowsの場合はコマンドプロンプト）を開いて、以下を実行：
+
+```bash
+ollama pull gemma3
+```
+
+> 💡 他のモデル（`llama3`、`mistral`等）も使用可能です。プラグインの設定でモデル名を変更してください。
+
+##### 3. CORS制限の解除（重要）
+
+FigmaプラグインからOllamaに接続するには、CORS制限を解除する必要があります。
+
+<details>
+<summary><strong>macOS</strong></summary>
+
+1. メニューバーのOllamaアイコンをクリックして「Quit Ollama」で終了
+2. ターミナルを開いて以下を実行：
+
+```bash
+OLLAMA_ORIGINS="*" ollama serve
+```
+
+> ⚠️ このターミナルウィンドウは開いたままにしてください。閉じるとOllamaが停止します。
+
+</details>
+
+<details>
+<summary><strong>Windows</strong></summary>
+
+1. タスクトレイのOllamaアイコンを右クリックして終了
+2. システム環境変数を設定：
+   - 「スタート」→「システム環境変数の編集」を検索して開く
+   - 「環境変数」ボタンをクリック
+   - 「ユーザー環境変数」の「新規」をクリック
+   - 変数名: `OLLAMA_ORIGINS`
+   - 変数値: `*`
+   - 「OK」で保存
+3. Ollamaを再起動
+
+</details>
+
+<details>
+<summary><strong>Linux</strong></summary>
+
+```bash
+# systemdを使用している場合
+sudo systemctl stop ollama
+sudo systemctl edit ollama.service
+```
+
+以下を追加：
+```ini
+[Service]
+Environment="OLLAMA_ORIGINS=*"
+```
+
+保存後：
+```bash
+sudo systemctl daemon-reload
+sudo systemctl start ollama
+```
+
+</details>
+
+##### 4. プラグインでの設定
+
+1. プロバイダー: **Ollama** を選択
+2. Base URL: `http://localhost:11434/v1`（デフォルト）
+3. Model: `gemma3`（または他のダウンロード済みモデル）
 
 ### 2. デザイントークンの生成
 

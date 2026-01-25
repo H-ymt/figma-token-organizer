@@ -528,7 +528,8 @@ function Plugin() {
                           value={editingValue}
                           onInput={(e: any) => setEditingValue(e.target.value)}
                           onKeyDown={(e: any) => {
-                            if (e.key === "Enter") handleSaveEdit();
+                            // IME変換中はEnterで確定しない
+                            if (e.key === "Enter" && !e.isComposing && !e.nativeEvent?.isComposing) handleSaveEdit();
                             if (e.key === "Escape") handleCancelEdit();
                           }}
                           autoFocus
@@ -588,7 +589,8 @@ function Plugin() {
                     value={chatInput}
                     onInput={(e: any) => setChatInput(e.target.value)}
                     onKeyDown={(e: any) => {
-                      if (e.key === "Enter" && !e.shiftKey) {
+                      // IME変換中（isComposing）はEnterで送信しない
+                      if (e.key === "Enter" && !e.shiftKey && !e.isComposing && !e.nativeEvent?.isComposing) {
                         e.preventDefault();
                         handleRefine();
                       }
