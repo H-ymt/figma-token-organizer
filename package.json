@@ -3,7 +3,7 @@
     "@create-figma-plugin/ui": "^4.0.3",
     "@create-figma-plugin/utilities": "^4.0.3",
     "preact": ">=10",
-    "prismjs": "1.29.0",
+    "prismjs": "1.30.0",
     "react-simple-code-editor": "0.13.1",
     "zustand": "^5.0.10"
   },
